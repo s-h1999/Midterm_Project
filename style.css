@@ -1,0 +1,189 @@
+/* style.css - clean and simple styling */
+
+/* ---------- Colors (change them here in one place) ---------- */
+:root {
+    --bg: #f3f4f6;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --danger: #dc2626;
+    --danger-dark: #b91c1c;
+}
+
+/* ---------- Page ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.container {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: 26px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+}
+
+.btn-delete {
+    background: var(--danger);
+}
+
+.btn-delete:hover {
+    background: var(--danger-dark);
+}
+
+.btn-cancel {
+    background: var(--muted);
+}
+
+.btn-cancel:hover {
+    background: #4b5563;
+}
+
+/* Space above the "Add Task" button's table */
+.container > .btn {
+    margin-bottom: 18px;
+}
+
+/* Space above the buttons at the bottom of a form */
+form .btn {
+    margin-top: 20px;
+}
+
+/* ---------- Messages ---------- */
+.success,
+.error {
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+}
+
+.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.error p {
+    margin: 2px 0;
+}
+
+/* ---------- Table ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    font-size: 13px;
+    color: var(--muted);
+    background: #f9fafb;
+}
+
+tr:hover td {
+    background: #f9fafb;
+}
+
+/* Buttons inside the table are smaller and sit on one line */
+table .btn {
+    margin-top: 0;
+    padding: 5px 12px;
+    font-size: 13px;
+}
+
+/* ---------- Form ---------- */
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text);
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+/* Blue outline when the user clicks a field */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 700px) {
+    .container {
+        margin: 0;
+        padding: 16px;
+        border-radius: 0;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 8px 6px;
+    }
+}
