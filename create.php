@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $sql = "INSERT INTO tasks (title, description, category, priority, due_date)
                 VALUES (:title, :description, :category, :priority, :due_date)";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $pdo->prepare($sql); // prepare a SQL statement to insert a new task into the database with placeholders for the values
         $stmt->execute([
             ":title"       => $title,
             ":description" => $description,
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // 4. Save a message in the session and go back to the list
         setFlash("success", "Task added.");
-        header("Location: index.php");
+        header("Location: index.php"); // redirect the user to the index.php page after the task is added
         exit;
     }
 }
@@ -62,10 +62,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
     <h1>Add Task</h1>
 
+    <!-- // loop through each error message in the $errors array and display it in a paragraph with a class of error -->
     <?php if (count($errors) > 0): ?>
         <div class="error">
             <?php foreach ($errors as $error): ?>
-                <p><?= h($error) ?></p>
+                <p><?= h($error) ?></p> 
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
@@ -83,7 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label>Priority</label>
         <select name="priority">
             <?php foreach ($priorities as $p): ?>
-                <option value="<?= h($p) ?>" <?php if ($priority == $p) echo "selected"; ?>><?= h($p) ?></option>
+                <!-- // loop through each priority  and if the current priority matches the selected priority - priority == $p, add the "selected" mean current priority  -->
+                <option value="<?= h($p) ?>" <?php if ($priority == $p) echo "selected"; ?>><?= h($p) ?></option> 
             <?php endforeach; ?>
         </select>
 
@@ -91,7 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="date" name="due_date" value="<?= h($due_date) ?>">
 
         <button type="submit" class="btn">Save Task</button>
-        <a href="index.php" class="btn btn-cancel">Cancel</a>
+
+        <!-- // create a link to the index.php page with a class of btn and the text "Cancel" -->
+        <a href="index.php" class="btn btn-cancel">Cancel</a> 
     </form>
 </div>
 </body>

@@ -4,15 +4,15 @@ require "db.php";
 require "functions.php";
 
 // Get the task id from the URL (edit.php?id=3), or from the form when saving
-if (isset($_POST["id"])) {
-    $id = (int)$_POST["id"];
-} elseif (isset($_GET["id"])) {
-    $id = (int)$_GET["id"];
+if (isset($_POST["id"])) { // check if the id is set in the POST request (form submission)
+    $id = (int)$_POST["id"]; // cast the id to an integer to prevent SQL injection and ensure it's a valid number
+} elseif (isset($_GET["id"])) { // check if the id is set in the GET request (URL parameter)
+    $id = (int)$_GET["id"]; // cast the id to an integer to prevent SQL injection and ensure it's a valid number
 } else {
-    die("No task id given.");
+    die("No task id given."); // if no id is provided, terminate the script and display an error message
 }
 
-// Load the current task from the database
+// check that do we have database to edit the current task? - Load the current task from the database
 $task = getTask($pdo, $id);
 if (!$task) {
     die("Task not found.");
